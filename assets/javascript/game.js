@@ -31,7 +31,7 @@ var hangman = {
     wins: 0,
 
     // functions for printing to the DOM
-    printHangman: function (numberOfIncorrectGuesses) {
+    printHangman: function(numberOfIncorrectGuesses) {
         document.getElementById('hangman').innerHTML =
             '<img class="col-xs-12" src="assets/images/Hangman-' +
             numberOfIncorrectGuesses + '.png">';
@@ -42,14 +42,14 @@ var hangman = {
             directions + '</h2><h4 class="visible-xs-* hidden-sm hidden-md ' +
             'hidden-lg"><strong>' + directions + '</strong></h4>';
     },
-    printWins: function (wins) {
+    printWins: function(wins) {
         document.getElementById('wins').innerHTML =
-            '<p><strong>Wins:</strong> ' + wins +'</p>';
+            '<p><strong>Wins:</strong> ' + wins + '</p>';
     },
-    printGamePlay: function (gamePlayPiece) {
+    printGamePlay: function(gamePlayPiece) {
         document.getElementById('game-play').innerHTML = gamePlayPiece;
     },
-    printGuesses: function (numberOfCorrectGuesses, guessesArray) {
+    printGuesses: function(numberOfCorrectGuesses, guessesArray) {
         var guessesRemaining =
             (this.TOTAL_NUMBER_OF_GUESSES -
                 (guessesArray.length - numberOfCorrectGuesses));
@@ -58,7 +58,7 @@ var hangman = {
             '</p><p><strong>Letters already guessed:</strong></p>' +
             guessesArray.join(' ');
     },
-    printBlankBoard: function () {
+    printBlankBoard: function() {
         document.getElementById('hangman').innerHTML =
             '<img class="col-xs-12" src="assets/images/Hangman-0.png">';
         document.getElementById('game-board').innerHTML =
@@ -66,11 +66,11 @@ var hangman = {
             '</div><div id="game-play"></div><div style="height: 20px;">' +
             '</div><div class="lead text-warning" id="guesses"></div>';
     },
-    showResult: function (divId, bootstrapClass, message) {
+    showResult: function(divId, bootstrapClass, message) {
         hangman.printDirections('Press any key to play again!');
         document.getElementById(divId).innerHTML =
             '<h1 class=' + bootstrapClass + '>' + message + '</h1>';
-        document.onkeyup = function () {
+        document.onkeyup = function() {
             hangman.printBlankBoard();
             playGame();
         };
@@ -112,7 +112,7 @@ function playGame() {
     }
 
     // Get user input
-    document.onkeyup = function (event) {
+    document.onkeyup = function(event) {
         if (!isAlpha(event.keyCode)) {
             return;
         }
@@ -155,6 +155,6 @@ function playGame() {
     };
 }
 
-document.onkeyup = function () {
+document.onkeyup = function() {
     playGame();
 };
