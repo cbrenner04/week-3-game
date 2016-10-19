@@ -47,11 +47,10 @@ var hangman = {
   numberOfCorrectGuesses: 0,
 
   initializeGamePlayArray: function() {
-    var gamePlayArray = [];
     for (var i = 0; i < this.currentWord.length; i++) {
-      gamePlayArray.push('__');
+      this.gamePlayArray.push('__');
     }
-    return gamePlayArray;
+    return this.gamePlayArray;
   },
 
   // function for checking that key input is alphabetic
@@ -96,27 +95,33 @@ var hangman = {
   printTo: function(element, message) {
       document.getElementById(element).innerHTML = message;
   },
+
   printHangman: function() {
     this.printTo('hangman',
       '<img class="col-xs-12" src="assets/images/Hangman-' +
       (this.guesses.length - this.numberOfCorrectGuesses) + '.png">');
   },
+
   printDirections: function(directions) {
     this.printTo('directions',
       '<h2 class="hidden-xs visible-sm-* visible-md-* visible-lg-*">' +
       directions + '</h2><h4 class="visible-xs-* hidden-sm hidden-md ' +
       'hidden-lg"><strong>' + directions + '</strong></h4>');
   },
+
   printWins: function() {
     this.printTo('wins', '<p><strong>Wins:</strong> ' + this.wins + '</p>');
   },
+
   printLosses: function() {
     this.printTo('losses', '<p><strong>Losses:</strong> ' + this.losses +
                  '</p>');
   },
+
   printGamePlay: function() {
     this.printTo('game-play', this.gamePlayArray.join(' '));
   },
+
   printGuesses: function() {
     var guessesRemaining =
       (this.TOTAL_NUMBER_OF_GUESSES -
@@ -125,6 +130,7 @@ var hangman = {
       guessesRemaining + '</p><p><strong>Letters already guessed:</strong></p>' +
       this.guesses.join(' '));
   },
+
   printBlankBoard: function() {
     this.printTo('hangman',
       '<img class="col-xs-12" src="assets/images/Hangman-0.png">');
@@ -133,6 +139,7 @@ var hangman = {
       '</div><div id="game-play"></div><div style="height: 20px;">' +
       '</div><div class="lead text-warning" id="guesses"></div>');
   },
+
   printStats: function() {
       this.printWins();
       this.printLosses();
@@ -177,6 +184,7 @@ var hangman = {
   resetGame: function() {
     this.numberOfCorrectGuesses = 0;
     this.guesses = [];
+    this.gamePlayArray = [];
     this.startGame();
   },
 
